@@ -12,16 +12,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-
     }
 
     fun startBarcodeLeader(view: View){
         IntentIntegrator(this).initiateScan()
-
     }
-
-
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
@@ -38,8 +33,8 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "cancelled", Toast.LENGTH_SHORT).show()
             }
         }else{
-            Log.d("Logd", "b")
-            super.onActivityResult(requestCode, resultCode, data) //여기로 들어가짐. 왜???
+            Log.d("Logd", "result == null")
+            super.onActivityResult(requestCode, resultCode, data) //여기로 들어가짐. 왜??? --> gradle에 kotlin-extension추가가 안되어있었다.
         }
     }
 }
